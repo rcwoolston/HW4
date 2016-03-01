@@ -1,0 +1,6 @@
+﻿  AvlTree.cpp
+c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\avltree.cpp(210): warning C4700: uninitialized local variable 'temp' used
+c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\avltree.cpp(244): warning C4715: 'AvlTree::RFind': not all control paths return a value
+c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\avltree.cpp(267): warning C4715: 'AvlTree::RFindComparisons': not all control paths return a value
+c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\avltree.cpp(286): warning C4715: 'AvlTree::RPreOrderTraverse': not all control paths return a value
+  HW4.vcxproj -> C:\Users\rcwoo\OneDrive\documents\visual studio 2015\Projects\HW4\Debug\HW4.exe
