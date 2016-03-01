@@ -303,3 +303,44 @@ int AvlTree::RCountTwoChildren(AvlNodeptr thisNode) {
 		return count;
 	}
 }
+
+int AvlTree::CountOneChild() {
+	return RCountOneChild(root);
+}
+
+int AvlTree::RCountOneChild(AvlNodeptr thisNode) {
+	int count = 0;
+	if (thisNode == NULL) {
+		return count;
+	}
+	else {
+		if (thisNode->ptrLeft != NULL && thisNode->ptrRight == NULL) {
+			count = 1;
+		}
+		else if (thisNode->ptrLeft == NULL && thisNode->ptrRight != NULL) {
+			count = 1;
+		}
+		count += RCountOneChild(thisNode->ptrLeft);
+		count += RCountOneChild(thisNode->ptrRight);
+		return count;
+	}
+}
+
+int AvlTree::CountLeaves() {
+	return RCountLeaves(root);
+}
+
+int AvlTree::RCountLeaves(AvlNodeptr thisNode) {
+	int count = 0;
+	if (thisNode == NULL) {
+		return count;
+	}
+	else {
+		if (thisNode->ptrLeft == NULL && thisNode->ptrRight == NULL) {
+			count = 1;
+		}
+		count += RCountLeaves(thisNode->ptrLeft);
+		count += RCountLeaves(thisNode->ptrRight);
+		return count;
+	}
+}

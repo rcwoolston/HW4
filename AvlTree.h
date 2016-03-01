@@ -36,8 +36,8 @@ public:
 	int FindComparisons(string s);
 	string Traverse();
 	int CountTwoChildren();
-	//int CountOneChild();
-	//int CountLeaves();
+	int CountOneChild();
+	int CountLeaves();
 
 
 private:
@@ -57,8 +57,8 @@ private:
 	int RFindComparisons(AvlNodeptr thisNode, string s);
 	string RPreOrderTraverse(AvlNodeptr thisNode);
 	int RCountTwoChildren(AvlNodeptr thisNode);
-	//int CountOneChild();
-	//int CountLeaves();
+	int RCountOneChild(AvlNodeptr thisNode);
+	int RCountLeaves(AvlNodeptr thisNode);
 
 };
 
