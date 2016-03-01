@@ -10,7 +10,7 @@ int main() {
 	ifstream finDictionary, hw4Input;
 	string tempString,instructions,value;
 	AvlTree Tree, TestTree;
-	int i, j, stop = 0;
+	int i, j, stop = 0, tempInt;
 	char tempChar;
 	bool done = false;
 
@@ -32,6 +32,7 @@ int main() {
 	cout << Tree.Size()<<endl;
 	cout << Tree.GetRoot()<<endl;
 	tempString = Tree.Traverse();
+	cout << endl << Tree.CountTwoChildren();
 
 	Tree.Delete("abandon");
 	Tree.Delete("a");

@@ -285,3 +285,21 @@ string AvlTree::RPreOrderTraverse(AvlNodeptr thisNode) {
 	}
 }
 
+int AvlTree::CountTwoChildren() {
+	return RCountTwoChildren(root);
+}
+
+int AvlTree::RCountTwoChildren(AvlNodeptr thisNode) {
+	int count = 0;
+	if (thisNode == NULL) {
+		return count;
+	}
+	else {
+		if (thisNode->ptrLeft != NULL && thisNode->ptrRight != NULL) {
+			count = 1;
+		}
+		count += RCountTwoChildren(thisNode->ptrLeft);
+		count += RCountTwoChildren(thisNode->ptrRight);
+		return count;
+	}
+}
