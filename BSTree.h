@@ -9,6 +9,7 @@ class TreeNode
 public:
 	string word;
 	TreeNode *ptrLeft, *ptrRight;
+	int height;
 	TreeNode(); // Default constructor.
 	TreeNode(string s); // Constructor with one parameter
 };
@@ -29,6 +30,13 @@ public:
 	void Insert(string s); // Insert a string into the binary search tree.
 	bool Find(string s); // search s in the list. Return true if s is found; otherwise, return false.
 	void Printp();
+	string GetRoot();
+	int CountTwoChildren();
+	int CountOneChild();
+	int CountLeaves();
+	int GetHeight(TreeNodeptr thisNode);
+	int FindComparisons(string s);
+
 private:
 	// You need to add private functions to implement the recursive solutions.
 	int FindHeight(TreeNode* node);
@@ -36,9 +44,13 @@ private:
 	void DeleteRec(TreeNode* node);
 	TreeNode* Remove(TreeNode* node, string temp);
 	void copyTree(TreeNode *&thisRoot,TreeNode *&source);
-	string preorderTraverse();
-	void PreOrder(TreeNode *node, string &words);
+	string preorderTraverse(TreeNodeptr thisNode);
 	TreeNode* FindMax(TreeNode *node);
 	void PrintPrivate(TreeNode* p, int indent = 0);
+	int RCountTwoChildren(TreeNodeptr thisNode);
+	int RCountOneChild(TreeNodeptr thisNode);
+	int RCountLeaves(TreeNodeptr thisNode);
+	void RInsert(TreeNodeptr &thisNode, string s);
+	int RFindComparisons(TreeNodeptr thisNode, string s);
 };
 #endif

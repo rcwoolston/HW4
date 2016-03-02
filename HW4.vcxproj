@@ -150,6 +150,9 @@
     <ClInclude Include="AvlTree.h" />
     <ClInclude Include="BSTree.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="hw4_input.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

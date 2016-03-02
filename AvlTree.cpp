@@ -225,22 +225,26 @@ bool AvlTree::Find(string s) {
 }
 
 bool AvlTree::RFind(AvlNodeptr thisNode, string s) {
+	bool found = false;
 	if (thisNode == NULL) {
-		return false;
+		found = false;
+		return found;
 	}
 	else if (thisNode != NULL) {
 		int value = s.compare(thisNode->word);
 
 		if (value == 0) {
-			return true;
+			found = true;
+			return found;
 		}
 		else if (value < 0) {
-			RFind(thisNode->ptrLeft, s);
+			found = RFind(thisNode->ptrLeft, s);
 		}
 		else {
-			RFind(thisNode->ptrRight, s);
+			found = RFind(thisNode->ptrRight, s);
 		}
 	}
+	return found;
 }
 
 int AvlTree::FindComparisons(string s) {

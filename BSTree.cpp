@@ -3,16 +3,19 @@
 #include <iostream>
 #include <vector>
 #include <iomanip>
+#include <algorithm>
 
 TreeNode::TreeNode() {  // Default constructor.
 	ptrRight = NULL;
 	ptrLeft = NULL;
 	word = "";
+	height = -1;
 }
 TreeNode::TreeNode(string s) { // Constructor with one parameter
 	ptrRight = NULL;
 	ptrLeft = NULL;
 	word = s;
+	height = 0;
 }
 
 BSTree::BSTree() { // Initializes root to NULL.
@@ -52,58 +55,43 @@ void BSTree::Delete(string s) { // Delete a string.
 	Remove(root, s);
 }
 string BSTree::Traverse() { // return a string containing all strings stored in the binary search tree in
-	return preorderTraverse();		   // the descending order.
+	return preorderTraverse(root);		   // the descending order.
 }
-string BSTree::preorderTraverse() {		
-	string words="";
-	PreOrder(root, words);
-	return words;
-}
-void BSTree::PreOrder(TreeNode *node, string &words) {
-	if (node == NULL) {
-		return;
+string BSTree::preorderTraverse(TreeNodeptr thisNode) {	
+	string ls, rs;
+	if (thisNode == NULL) {
+		return " ";
 	}
-	words.append(" " + node->word);
-	PreOrder(node->ptrLeft, words);
-	PreOrder(node->ptrRight, words);
+	else if (thisNode)
+	{
+		cout << thisNode->word << " ";
+		ls = preorderTraverse(thisNode->ptrLeft);
+		rs = preorderTraverse(thisNode->ptrRight);
+		return (rs + thisNode->word + ls);
+	}
 }
 void BSTree::Insert(string s) { // Insert a string into the binary search tree.
-		TreeNode *temp = new TreeNode(s);
+	RInsert(root, s);
+}
 
-	if (root == NULL) {
-		root = new TreeNode(s);
-		temp = root;
+void BSTree::RInsert(TreeNodeptr &thisNode, string s) {
+	if (thisNode == NULL) {
+		thisNode = new TreeNode(s);
 	}
 	else {
-		bool inserted = false;
-		TreeNode* node = root;
-
-		while (!inserted) {
-			int value = temp->word.compare(node->word);
-			if (value == 0) {
-				delete temp;
-				inserted = true;
-			}
-			else if (value < 0) {
-				if (node->ptrLeft == NULL) {
-					node->ptrLeft = temp;
-					inserted = true;
-				}
-				else {
-					node = node->ptrLeft;
-				}
-			}
-			else {
-				if (node->ptrRight == NULL) {
-					node->ptrRight = temp;
-					inserted = true;
-				}
-				else {
-					node = node->ptrRight;
-				}
-			}
+		int value = s.compare(thisNode->word);
+		if (value == 0) {
+			return;
+		}
+		else if (value < 0) {
+			RInsert(thisNode->ptrLeft, s);
+		}
+		else {
+			RInsert(thisNode->ptrRight, s);
 		}
 	}
+	thisNode->height = 1 + max(GetHeight(thisNode->ptrLeft), GetHeight(thisNode->ptrRight));
+	//Balance(thisNode);
 }
 
 
@@ -237,4 +225,102 @@ void BSTree::PrintPrivate(TreeNode* p, int indent)
 
 void BSTree::Printp() {
 	PrintPrivate(root, 0);
+}
+
+string BSTree::GetRoot() {
+	return root->word;
+}
+
+int BSTree::CountTwoChildren() {
+	return RCountTwoChildren(root);
+}
+
+int BSTree::RCountTwoChildren(TreeNodeptr thisNode) {
+	int count = 0;
+	if (thisNode == NULL) {
+		return count;
+	}
+	else {
+		if (thisNode->ptrLeft != NULL && thisNode->ptrRight != NULL) {
+			count = 1;
+		}
+		count += RCountTwoChildren(thisNode->ptrLeft);
+		count += RCountTwoChildren(thisNode->ptrRight);
+		return count;
+	}
+}
+
+
+
+int BSTree::CountOneChild() {
+	return RCountOneChild(root);
+}
+
+int BSTree::RCountOneChild(TreeNodeptr thisNode) {
+	int count = 0;
+	if (thisNode == NULL) {
+		return count;
+	}
+	else {
+		if (thisNode->ptrLeft != NULL && thisNode->ptrRight == NULL) {
+			count = 1;
+		}
+		else if (thisNode->ptrLeft == NULL && thisNode->ptrRight != NULL) {
+			count = 1;
+		}
+		count += RCountOneChild(thisNode->ptrLeft);
+		count += RCountOneChild(thisNode->ptrRight);
+		return count;
+	}
+}
+
+int BSTree::CountLeaves() {
+	return RCountLeaves(root);
+}
+
+int BSTree::RCountLeaves(TreeNodeptr thisNode) {
+	int count = 0;
+	if (thisNode == NULL) {
+		return count;
+	}
+	else {
+		if (thisNode->ptrLeft == NULL && thisNode->ptrRight == NULL) {
+			count = 1;
+		}
+		count += RCountLeaves(thisNode->ptrLeft);
+		count += RCountLeaves(thisNode->ptrRight);
+		return count;
+	}
+}
+
+int BSTree::GetHeight(TreeNodeptr thisNode) {
+	if (thisNode == NULL) {
+		return -1;
+	}
+	else {
+		return thisNode->height;
+	}
+}
+
+int BSTree::FindComparisons(string s) {
+	return RFindComparisons(root, s);
+}
+
+int BSTree::RFindComparisons(TreeNodeptr thisNode, string s) {
+	if (thisNode == NULL) {
+		return 1;
+	}
+	else if (thisNode != NULL) {
+		int value = s.compare(thisNode->word);
+
+		if (value == 0) {
+			return 1;
+		}
+		else if (value < 0) {
+			return 1 + RFindComparisons(thisNode->ptrLeft, s);
+		}
+		else {
+			return 1 + RFindComparisons(thisNode->ptrRight, s);
+		}
+	}
 }
