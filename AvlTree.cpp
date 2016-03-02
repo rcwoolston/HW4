@@ -205,7 +205,7 @@ void AvlTree::DelNode(AvlNodeptr &thisNode) {
 		delete temp;
 	}
 	else if (thisNode->ptrRight == NULL) {
-		AvlNodeptr temp;
+		AvlNodeptr temp = thisNode;
 		thisNode = thisNode->ptrLeft;
 		delete temp;
 	}
@@ -281,7 +281,7 @@ string AvlTree::RPreOrderTraverse(AvlNodeptr thisNode) {
 		cout << thisNode->word << " ";
 		ls = RPreOrderTraverse(thisNode->ptrLeft);
 		rs = RPreOrderTraverse(thisNode->ptrRight);
-		return (ls + thisNode->word + rs);
+		return (rs + thisNode->word +ls);
 	}
 }
 
