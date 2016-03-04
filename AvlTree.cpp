@@ -49,6 +49,7 @@ void AvlTree::CopyTree(AvlNodeptr &thisNode, AvlNodeptr &source) {
 	}
 	else {
 		thisNode = new AvlNode(source->word);
+		thisNode->height = source->height;
 		CopyTree(thisNode->ptrLeft, source->ptrLeft);
 		CopyTree(thisNode->ptrRight, source->ptrRight);
 	}

@@ -1,6 +1,13 @@
-﻿  AvlTree.cpp
-c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\avltree.cpp(210): warning C4700: uninitialized local variable 'temp' used
-c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\avltree.cpp(244): warning C4715: 'AvlTree::RFind': not all control paths return a value
-c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\avltree.cpp(267): warning C4715: 'AvlTree::RFindComparisons': not all control paths return a value
-c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\avltree.cpp(286): warning C4715: 'AvlTree::RPreOrderTraverse': not all control paths return a value
+﻿  main.cpp
+c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\main.cpp(35): warning C4018: '<': signed/unsigned mismatch
+c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\main.cpp(83): warning C4018: '<': signed/unsigned mismatch
+c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\main.cpp(87): warning C4018: '<': signed/unsigned mismatch
+c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\main.cpp(127): warning C4018: '<': signed/unsigned mismatch
+c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\main.cpp(202): warning C4018: '<': signed/unsigned mismatch
+c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\main.cpp(24): warning C4101: 'tempChar': unreferenced local variable
+c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\main.cpp(23): warning C4101: 'tempInt': unreferenced local variable
+c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\main.cpp(229): warning C4018: '<': signed/unsigned mismatch
+c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\main.cpp(249): warning C4018: '<': signed/unsigned mismatch
+c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\main.cpp(263): warning C4018: '<': signed/unsigned mismatch
+c:\users\rcwoo\onedrive\documents\visual studio 2015\projects\hw4\hw4\main.cpp(273): warning C4018: '<': signed/unsigned mismatch
   HW4.vcxproj -> C:\Users\rcwoo\OneDrive\documents\visual studio 2015\Projects\HW4\Debug\HW4.exe
